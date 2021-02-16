@@ -10,7 +10,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 executable_path = {'executable_path': ChromeDriverManager().install()}
 browser = Browser('chrome', **executable_path, headless=False)
 
-# Getting The News
+# ##Getting The News
 # Visit the mars nasa news site
 url = 'https://mars.nasa.gov/news/'
 browser.visit(url)
@@ -33,7 +33,7 @@ news_title
 news_p = slide_elem.find('div', class_="article_teaser_body").get_text()
 news_p
 
-# Featured Images
+# ##Featured Images
 # Visit URL
 url = 'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/index.html'
 browser.visit(url)
@@ -54,7 +54,7 @@ img_url_rel
 img_url = f'https://data-class-jpl-space.s3.amazonaws.com/JPL_Space/{img_url_rel}'
 img_url
 
-# Getting The Facts
+# ##Getting The Facts
 # Read Mars facts into a datframe with Pandas' .read_html() function
 df = pd.read_html('http://space-facts.com/mars/')[0]
 df.columns=['description', 'value']
