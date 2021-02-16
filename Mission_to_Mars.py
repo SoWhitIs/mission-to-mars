@@ -18,10 +18,10 @@ browser.visit(url)
 # Optional delay for loading the page
 browser.is_element_present_by_css("ul.item_list li.slide", wait_time=1)
 
-# Covert the broswer html to a soup object and then quit the broswer 
-html = browser.html
+# Covert the broswer html to a soup object 
 news_soup = soup(html, 'html.parser')
 
+# Set Variable to search for div tags <ul /> and descendent tag <li />
 slide_elem = news_soup.select_one('ul.item_list li.slide')
 slide_elem.find("div", class_='content_title')
 
