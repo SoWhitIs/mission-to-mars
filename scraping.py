@@ -10,7 +10,7 @@ executable_path = {'executable_path': ChromeDriverManager().install()}
 
 def scrape_all():
     # Initiate headless driver for deployment
-    browser = Browser("chrome", executable_path="ChromeDriverManager", headless=True)
+    browser = Browser('chrome', **executable_path, headless=True)
 
     news_title, news_paragraph = mars_news(browser)
 # Run all scraping functions and store results in dictionary
@@ -45,6 +45,7 @@ def mars_news(browser):
         news_title = slide_elem.find("div", class_='content_title').get_text()
         # Use the parent element to find the paragraph text
         news_p = slide_elem.find('div', class_="article_teaser_body").get_text()
+        
     except AttributeError:
         return None, None
 
@@ -67,6 +68,7 @@ def featured_image(browser):
     try:
         # Find the relative image url
         img_url_rel = img_soup.find('img', class_='fancybox-image').get('src')
+
     except AttributeError:
         return None
 
@@ -80,6 +82,7 @@ def mars_facts():
     try:
         # Read Mars facts into a datframe with Pandas' .read_html() function
         df = pd.read_html('http://space-facts.com/mars/')[0]
+
     except BaseException:
         return None
 
@@ -94,5 +97,3 @@ if __name__ == "__main__":
 
     # If running as script, print scraped data
     print(scrape_all())
-
-
