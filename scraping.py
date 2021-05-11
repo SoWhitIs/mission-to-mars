@@ -20,7 +20,7 @@ def scrape_all():
         "featured_image": featured_image(browser),
         "facts": mars_facts(),
         "last_modified": dt.datetime.now(),
-        "hemisphere_data": hemisphere_image_urls
+        "hemispheres": hemp_data(browser)
     }
     # Stop webdriver and return data
     browser.quit()
@@ -95,24 +95,23 @@ def mars_facts():
     return df.to_html()
 
 # ##Scrape Mars' Hemisphere Images and Titles
-def hemp_data():
+def hemp_data(browser):
     url = 'https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars'
     browser.visit(url)
 
     # Create a list to hold images and titles
     hemisphere_image_urls = []
-    titles = []
-    Img_Url = []
     for i in range(4):
         title= browser.find_by_css("a.product-item h3")[i].text
         browser.find_by_css("a.itemLink h3")[i].click()
         hem_titles=soup(browser.html, 'html.parser')
         urls=hem_titles.find("a", text="Sample").get("href")
-        dict_val = { "Img_Url" : urls ,
-              "Title" : title}
+        dict_val = { "img_url" : urls ,
+              "title" : title}
         hemisphere_image_urls.append(dict_val)
         browser.back()
 
+    return hemisphere_image_urls
 if __name__ == "__main__":
 
     # If running as script, print scraped data
