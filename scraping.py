@@ -101,15 +101,18 @@ def hemp_data(browser):
 
     # Create a list to hold images and titles
     hemisphere_image_urls = []
+    # titles = []
+    # img_url = []
     for i in range(4):
         title= browser.find_by_css("a.product-item h3")[i].text
         browser.find_by_css("a.itemLink h3")[i].click()
         hem_titles=soup(browser.html, 'html.parser')
         urls=hem_titles.find("a", text="Sample").get("href")
-        dict_val = { "img_url" : urls ,
-              "title" : title}
+        dict_val = { "title" : title, "img_url" : urls}
+
         hemisphere_image_urls.append(dict_val)
         browser.back()
+        
 
     return hemisphere_image_urls
 if __name__ == "__main__":
