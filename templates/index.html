@@ -52,12 +52,16 @@
           <div class="row" id="mars-featured-image">
             <div class="column">
           <h2> Mars Hemispheres</h2>
-          
+      
+          <div class="col-sm-8">
+            <div class="center">
           {% for hemisphere in mars.hemispheres %}
-          <img src="{{hemisphere['img_url']|default('static/images/error.png', true)}}" alt="...">
+          <img src="{{hemisphere['img_url']|default('static/images/error.png', true)}}" alt=".." style="width:200px;height:200px;" >
           <h5 id="caption">{{hemisphere['title']}}</h5>
           {% endfor %}
+          </div>
         </div>
+      </div>
       </div>
     </div>
   </body>
