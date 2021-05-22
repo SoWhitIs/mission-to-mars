@@ -1,4 +1,4 @@
-#_What’s the deal with Mars?_|| Data Scrape Analysis
+# _A Path To Mars?_ || Data Scrape Analysis
 
 ## Overview of Project 
 Mars enthusiast client is interested in creating a web application that will, effectively, at the press of a button will gather (and subsequently, stored in a database) information about the planet, Mars. 
