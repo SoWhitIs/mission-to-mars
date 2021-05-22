@@ -11,7 +11,7 @@
     />
   </head>
   <body>
-    <div class="container">
+    <div class="container-fluid">
       <!-- Add Jumbotron to Header -->
       <div class="jumbotron text-center">
         <h1>Mission To Mars</h1>
@@ -31,6 +31,7 @@
         </div>
       </div>
       <!-- Section for Featured Image and Facts table -->
+      <div class="container-fluid">
       <div class="row" id="mars-featured-image">
         <div class="col-md-8">
           <h2>Featured Mars Image</h2>
@@ -46,6 +47,16 @@
             <h4>Mars Facts</h4>
             {{ mars.facts | safe }}
           </div>
+        </div>
+        <div class="container-fluid"></div>
+          <div class="row" id="mars-featured-image">
+            <div class="column">
+          <h2> Mars Hemispheres</h2>
+          
+          {% for hemisphere in mars.hemispheres %}
+          <img src="{{hemisphere['img_url']|default('static/images/error.png', true)}}" alt="...">
+          <h5 id="caption">{{hemisphere['title']}}</h5>
+          {% endfor %}
         </div>
       </div>
     </div>
